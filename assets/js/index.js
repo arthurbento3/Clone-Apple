@@ -1,26 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const navbar = document.querySelector("#navbar");
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('tvSlider');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
 
-    // Efeito de opacidade na Navbar ao rolar a página
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 20) {
-            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.92)";
-            navbar.style.boxShadow = "0 1px 5px rgba(0,0,0,0.1)";
-        } else {
-            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-            navbar.style.boxShadow = "none";
-        }
+  if (slider && prevBtn && nextBtn) {
+    const cardWidth = 870;
+
+
+    nextBtn.addEventListener('click', () => {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      if (slider.scrollLeft >= maxScroll - 10) {
+        slider.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
     });
 
-    // Interatividade suave nos botões CTA
-    const buttons = document.querySelectorAll(".cta-links a");
-    buttons.forEach((button) => {
-        button.addEventListener("click", (e) => {
-            const destination = button.getAttribute("href");
-            if (destination === "#") {
-                e.preventDefault();
-                console.log(`Navegação simulada para: ${button.textContent}`);
-            }
-        });
+    prevBtn.addEventListener('click', () => {
+      if (slider.scrollLeft <= 10) {
+        slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+      } else {
+        slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
     });
+  }
 });
