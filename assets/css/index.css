@@ -10,7 +10,6 @@ body {
   color: #1d1d1f;
   overflow-x: hidden;
 }
-
 .navbar {
   position: fixed;
   top: 0;
@@ -46,21 +45,32 @@ body {
 }
 
 .nav-icon {
-  font-size: 15px !important;
+  font-size: 15px ;
 }
-
 .hero {
   position: relative;
   width: 100%;
   height: 580px;
   margin-bottom: 12px;
-  background-color: #000000;
+  background-color: #f5f5f7;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 50px;
+  align-items: flex-start;
+  padding-top: 55px;
   text-align: center;
   overflow: hidden;
+}
+
+
+.hero-event {
+  background-color: #000000;
+  align-items: flex-end;
+  padding-top: 0;
+  padding-bottom: 50px;
+}
+
+.hero-event .hero-content {
+  color: #ffffff;
 }
 
 .hero-bg {
@@ -71,6 +81,7 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: contrast(1.05) brightness(0.98); 
   image-rendering: -webkit-optimize-contrast;
   z-index: 1;
 }
@@ -78,7 +89,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  color: #ffffff;
+  color: #1d1d1f; 
 }
 
 .hero-content h2 {
@@ -95,7 +106,7 @@ body {
 
 .hero-content .subtitle {
   font-size: 19px;
-  color: #86868b;
+  color: #424245; 
   margin-top: 6px;
 }
 
@@ -139,7 +150,6 @@ body {
   color: #1d1d1f;
   font-weight: 600;
 }
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -152,7 +162,7 @@ body {
 .grid-card {
   position: relative;
   height: 490px;
-  background-color: #000;
+  background-color: #f5f5f7;
   border-radius: 18px;
   overflow: hidden;
   display: flex;
@@ -170,6 +180,7 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: contrast(1.05);
   image-rendering: -webkit-optimize-contrast;
   z-index: 1;
 }
@@ -177,7 +188,7 @@ body {
 .card-content {
   position: relative;
   z-index: 2;
-  color: #ffffff;
+  color: #1d1d1f;
 }
 
 .card-content h2 {
@@ -188,8 +199,8 @@ body {
 .card-content p {
   font-size: 14px;
   margin-top: 4px;
+  color: #424245;
 }
-
 .tv-slider-wrapper {
   position: relative;
   width: 100%;
@@ -197,18 +208,18 @@ body {
 }
 
 .tv-slider {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
+  display: flex ;
+  flex-direction: row ;
+  flex-wrap: nowrap ;
   gap: 20px;
-  overflow-x: hidden !important; 
+  overflow-x: hidden ;
   scroll-behavior: smooth;
   padding: 0 60px;
-  cursor: default; 
+  cursor: default;
 }
 
 .tv-card {
-  flex: 0 0 80vw !important;
+  flex: 0 0 80vw ;
   max-width: 850px;
   height: 460px;
   position: relative;
@@ -274,6 +285,7 @@ body {
 .next-btn {
   right: 20px;
 }
+
 .footer {
   background-color: #f5f5f7;
   color: #6e6e73;
@@ -361,22 +373,106 @@ body {
 }
 
 @media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
+
+  .nav-content {
+    display: flex ;
+    justify-content: flex-start ;
+    align-items: center ;
+    padding: 0 16px ;
+    width: 100% ;
+  }
+  .logo {
+    order: 1 ;
+    margin-right: 0 ;
+  }
+  .nav-actions {
+    order: 2 ;
+    display: flex ;
+    align-items: center ;
+    gap: 16px ;
+    margin-left: auto ; 
+    margin-right: 16px ; 
+  }
+  .menu-toggle {
+    order: 3 ;
+    display: flex ;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
 
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #1d1d1f;
+    border-radius: 2px;
+  }
+  .nav-links {
+    display: none ;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 44px);
+    overflow-y: auto;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px 30px 24px;
+    gap: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex ;
+  }
+
+  .nav-links a {
+    font-size: 17px;
+    font-weight: 500;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f5f5f7;
+    color: #1d1d1f;
+  }
+  .grid-container {
+    grid-template-columns: 1fr ;
+  }
+
+  .grid-card {
+    height: 420px ;
+  }
   .tv-card {
-    flex: 0 0 90vw !important;
-    height: 320px;
+    flex: 0 0 85vw ;
+    height: 300px ;
+  }
+
+  .tv-slider-wrapper {
+    padding-bottom: 75px ;
   }
 
   .slider-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 14px;
+    top: auto ;
+    bottom: 15px ;
+    transform: none ;
+    width: 44px ;
+    height: 44px ;
+    background-color: #ffffff ;
   }
 
-  .footer-links {
-    flex-direction: column;
+  .prev-btn {
+    left: calc(50% - 55px) ;
+  }
+
+  .next-btn {
+    right: calc(50% - 55px) ;
   }
 }
